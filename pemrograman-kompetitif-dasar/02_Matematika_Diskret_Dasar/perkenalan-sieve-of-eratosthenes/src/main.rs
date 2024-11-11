@@ -3,6 +3,7 @@
 use std::io::stdin;
 
 const N: usize = 1000000;
+const K: usize = 80000;
 
 fn take_int() -> usize {
     let mut input = String::new();
@@ -29,16 +30,16 @@ fn sieve(sieve_array: &mut Vec<bool>, n: usize){
 
 fn main() {
     let mut is_prime: Vec<bool> = vec![true; N+1];
-    let mut prime: [usize;N] = [0;N];
+    let mut prime: Vec<u32> = vec![0;K+10];
     let mut idx: usize = 0;
 
     sieve(&mut is_prime, N);
 
-    let test_case = take_int();
+    let test_case = take_int() as u32;
 
     for i in 0..N {
 		if is_prime[i]==true {
-			prime[idx]=i;
+			prime[idx]= i as u32;
 			idx +=1;
 		}
 	}    

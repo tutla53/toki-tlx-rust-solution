@@ -26,8 +26,7 @@ fn to_string(vec:Vec<char>) -> String{
     return vec.iter().collect::<String>();
 }
 
-
 fn main(){
-    let t = take_int();
-    println!("{}", t);
+    let t = take_int() as u32;
+    println!("{}", t*2);
 }

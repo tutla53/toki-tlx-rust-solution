@@ -1,18 +1,9 @@
-#![allow(unused)]
-
 use {
     std::io::stdin,
     std::str::FromStr,
     std::fmt::Debug,
-    std::collections::BinaryHeap,
-    std::cmp::Reverse
+    std::collections::BinaryHeap
 };
-
-fn take_int<T: FromStr>() -> T where <T as FromStr>::Err: Debug{
-    let mut input = String::new();
-    stdin().read_line(&mut input).unwrap();
-    return input.trim().parse().unwrap()
-}
 
 fn take_vector<T: FromStr>() -> Vec<T> where <T as FromStr>::Err: Debug{
     let mut input = String::new();
@@ -21,33 +12,32 @@ fn take_vector<T: FromStr>() -> Vec<T> where <T as FromStr>::Err: Debug{
     return arr;
 }
 
-fn take_string() -> Vec<char> {
-    let mut input = String::new();
-    stdin().read_line(&mut input).unwrap();
-    let vec:Vec<char> = input.trim().chars().collect();
-    return vec;
-}
-
-fn to_string(vec:Vec<char>) -> String{
-    return vec.iter().collect::<String>();
-}
-
 fn main(){
     let mut heap = BinaryHeap::new();
+    let cmd: Vec<usize> = take_vector();
+    let arr: Vec<u32> = take_vector();
 
-    heap.push(Reverse(1));
-    heap.push(Reverse(2));
-    heap.push(Reverse(5));
-
-    let mut m: u8;
-    while(!heap.is_empty()){
-        match heap.peek(){
-            None => m = 0,
-            Some(Reverse(value)) => {
-                m = *value
-            },
+    for i in 0..cmd[0]{
+        if heap.len()<cmd[1] {
+            heap.push(arr[i]);
         }
-        println!("{}", m);
-        heap.pop();
+        else{
+            match heap.peek(){
+                None => println!(""),
+                Some(value) => {
+                    if arr[i]<*value {
+                        heap.pop();
+                        heap.push(arr[i]);
+                    }
+                },
+            }
+        }
+    }
+    
+    match heap.peek(){
+        None => println!(""),
+        Some(value) => {
+            println!("{}", value);
+        },
     }
 }

@@ -1,19 +1,6 @@
-#![allow(unused)]
-
-use std::io::stdin;
-
-fn take_int() -> usize {
-    let mut input = String::new();
-    stdin().read_line(&mut input).unwrap();
-    return input.trim().parse().unwrap()
-}
-
-fn take_vector() -> Vec<usize> {
-    let mut input = String::new();
-    stdin().read_line(&mut input).unwrap();
-    let arr: Vec<usize> = input.trim().split_whitespace().map(|x| x.parse().unwrap()).collect();
-    return arr;
-}
+use {
+    std::io::stdin
+};
 
 fn take_string() -> Vec<char> {
     let mut input = String::new();
@@ -22,11 +9,23 @@ fn take_string() -> Vec<char> {
     return vec;
 }
 
-fn to_string(vec:Vec<char>) -> String{
-    return vec.iter().collect::<String>();
-}
-
 fn main(){
-    let t = take_int() as u32;
-    println!("{}", t*2);
+    let input_word = take_string();
+    let word_len = input_word.len();
+    let sq_len = (word_len as f32).sqrt().ceil() as usize;
+    let mut idx: usize = 0;
+
+    for i in 0..sq_len{
+        for _j in 0..sq_len{
+            if idx< word_len {print!("{}", input_word[idx]);}
+            else { print!(".");}
+
+            if i&1 == 0 {idx = idx + 1;}
+            else{idx = idx - 1;}
+        }
+        
+        if i&1 == 0 {idx = idx + (sq_len-1);}
+        else {idx = idx + (sq_len+1);}
+        println!("");
+    }
 }

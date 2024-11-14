@@ -12,17 +12,6 @@ fn take_vector<T: FromStr>() -> Vec<T> where <T as FromStr>::Err: Debug{
     return arr;
 }
 
-fn take_string() -> Vec<char> {
-    let mut input = String::new();
-    stdin().read_line(&mut input).unwrap();
-    let vec:Vec<char> = input.trim().chars().collect();
-    return vec;
-}
-
-fn to_string(vec:Vec<char>) -> String{
-    return vec.iter().collect::<String>();
-}
-
 fn main(){
     let mut map: HashMap<String, String> = HashMap::new();
     let cmd: Vec<u32> = take_vector();
@@ -37,9 +26,9 @@ fn main(){
     }
     
     while q>0 {
-        let input = to_string(take_string());
+        let input:Vec<String> = take_vector();
 
-        match map.get_key_value(&input){
+        match map.get_key_value(&input[0]){
             Some((_key, value)) => println!("{}", *value),
             None => println!("NIHIL"),
         }

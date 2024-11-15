@@ -1,16 +1,16 @@
-/*Perkenalan Sieve of Eratosthenes*/
-
-#![allow(unused)]
-
-use std::io::stdin;
+use {
+    std::io::stdin,
+    std::str::FromStr,
+    std::fmt::Debug
+};
 
 const N: usize = 1000000;
 const K: usize = 80000;
 
-fn take_int() -> usize {
+fn take_int<T: FromStr>() -> T where <T as FromStr>::Err: Debug{
     let mut input = String::new();
     stdin().read_line(&mut input).unwrap();
-    return input.trim().parse().unwrap();
+    return input.trim().parse().unwrap()
 }
 
 fn sieve(sieve_array: &mut Vec<bool>, n: usize){
@@ -37,7 +37,7 @@ fn main() {
 
     sieve(&mut is_prime, N);
 
-    let test_case = take_int() as u32;
+    let mut test_case:u32 = take_int();
 
     for i in 0..N {
 		if is_prime[i]==true {
@@ -46,8 +46,9 @@ fn main() {
 		}
 	}    
 
-    for i in 0..test_case {
-    	let x = take_int();
+    while test_case>0 {
+    	let x:usize = take_int();
     	println!("{}",prime[x-1]);
+        test_case = test_case - 1;
     }
 }

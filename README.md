@@ -13,17 +13,17 @@ Solve Indonesian Online Judge 🇮🇩 <a href="https://tlx.toki.id/">TLX Compet
 <td valign="top">  
    
 ```
-Progress(8/87)
+Progress(9/87)
 ├── 01_Perkenalan_Pemrograman_Kompetitif (2/5)
 │   ├── A. Perkenalan Soal Implementasi ✅
 │   ├── P1. Operasi Matriks
 │   ├── P2. Runtuh
 │   ├── P3. Menyelidiki Pesan
 │   └── P4. Pola String ✅
-├── 02_Matematika_Diskret_Dasar (0/10)
+├── 02_Matematika_Diskret_Dasar (1/10)
 │   ├── A. Bilangan Agak Prima 
 │   ├── B. Faktorisasi Prima 
-│   ├── C. Perkenalan Sieve of Eratosthenes 
+│   ├── C. Perkenalan Sieve of Eratosthenes ✅
 │   ├── D. Perkenalan FPB 
 │   ├── E. Perkenalan Kombinasi dan Aritmetika Modular 
 │   ├── P1. Kandang Segitiga 

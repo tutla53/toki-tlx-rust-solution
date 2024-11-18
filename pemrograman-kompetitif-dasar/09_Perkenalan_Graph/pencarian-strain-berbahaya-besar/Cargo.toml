@@ -1,0 +1,6 @@
+[package]
+name = "pencarian-strain-berbahaya-besar"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
